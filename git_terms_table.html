@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+<head>
+<title>Git Basic Terms & Concepts</title>
+</head>
+<body>
+
+<h1>Git Basic Terms & Concepts</h1>
+
+<span><i>To err is human.  To really screw up requires git.</i></span>
+
+<p>In the table below, git command always start with <b>git</b>.  Concepts will typically start with some other word or term.</p>
+
+<table style="width:100%">
+  <tr>
+    <th>Command or Concept</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>change set</td>
+    <td>Git doesn't work with files.  It works with change sets</td>
+  </tr>
+  <tr>
+    <td>tracked vs. untracked files</td>
+    <td>Tracked files are those that git know about and under version control.  Untracked files are files that git doesn't care about.</td>
+  </tr>
+  </tr>
+    <tr>
+    <td>staging area</td>
+    <td>This is also know as <b>the index</b>.  This area acts as a intermediate state between the working directory and the commit.  This is where a tracked file is placed after changes have been made and a <b>git add [file name]</b> has been executed.</td>
+  </tr>
+  <tr>
+    <td>working directory</td>
+    <td>The location of your git project.  This is your local directory where your project files live.</td>
+  </tr>
+  <tr>
+    <td>commit hash</td>
+    <td>This is 40 digit hex value that identifies a commit. Usually only need to give git 4 or 5 digits to specify  given commit.</td>
+  </tr>
+  <tr>
+    <td>HEAD pointer</td>
+    <td>This is the pointer that points to the most recent commit (or tip) of a branch.</td>
+  </tr>
+  <tr>
+    <td>git init</td>
+    <td>Initializes a repository (aka repo) from where ever this command is executed.</td>
+  </tr>
+  <tr>
+    <td>git status</td>
+    <td>Shows the contents of the staging area as well as lists the contents of untracked files</td>
+  </tr>
+  <tr>
+    <td>git add <i>[file name]</i></td>
+    <td>This does two different things depending on the context.  If the file was previously untracked, this command tells git to start tracking the file.  If the file is being tracked</td>
+  </tr>
+  <tr>
+    <td>git commit -m <i>[commit message]</i></td>
+    <td>Commits the files that you have staged (i.e. added to your index).  Good commit messages make it easier for you navigate history.</td>
+  </tr>
+  <tr>
+    <td>git log</td>
+    <td>This command has a lot of options.  For example, my favorite is:<br><br>git log --oneline -5<br><br>which lists a summary of the last 5 commits on a single line.  Feel free to explore.</td>
+  </tr>
+    <tr>
+    <td>git checkout <i>[branch name]</i></td>
+    <td>Important that your working dir is clean before running this command. Use the -b option to create a new branch and navigate into it</td>
+  </tr>
+  </tr>
+    <tr>
+    <td>git checkout -b <i>[branch name]</i></td>
+    <td>Create a new branch from the existing branch you executed this command from.  As with a regular checkout, make sure your working dir is clean before running this command.</td>
+  </tr>
+  <tr>
+    <td>git branch</td>
+    <td>lists the branches in your project repo.</td>
+  </tr>
+  <tr>
+    <td>git branch -d <i>[branch name]</i><br><br>git branch -D <i>[branch name]</i></td>
+    <td>Deletes a branch.  Using <b>-d</b> tell git to remove the branch only if the working directory is clean.  Using the <b>-D</b> tells git to remove the branch regardless of whether there are uncommited changes or not.</td>
+  </tr>
+  <tr>
+    <td>git merge <i>[branch name]</i></td>
+    <td>The branch you are on when you execute this command is considered the <b>receiver</b>.  This is the branch that will receive the changes from the merge with <i>[branch name]</i>.  This command will generally result in one of 3 outcomes: 1) a fast-forward merge, 2) a recursive merge, or 3) a merge CONFLICT</td>
+  </tr>
+  <tr>
+    <td>git merge --abort</td>
+    <td>This is command comes in handy if you do a merge and run into a conflict which you just don't want to resolve at this time.  Running this command will put you back into the state you were in before you attempted your merge.</td>
+  </tr>
+<tr>
+    <td>git remote</td>
+    <td>Lists the remotes the local git project knows about.  Using -v option lists urls to push and fetch (which are usually the same).  Remotes tell your local git installation where to push remote changes.</td>
+  </tr>
+  <tr>
+    <td>git remote add <i>[remote name]</i> <i>[url to remote]</i></td>
+    <td>In order to get your local changes up to github, you need need to tell git where to send those changes.  A <b>Remote</b> is a pointer which tells git where to push changes you made locally.  For example, this is the command I use to create a remote for a new project I want to share on github:<br><br>git remote add origin https://github.com/MichaelSzczepaniak/<i>[project name]</i><br><br>Once you've created a remote, you can <b>push</b> changes to it.</td>
+  </tr>
+  <tr>
+    <td>git push -u origin <i>[branch name e.g. <b>master</b>]</i></td>
+    <td>This is typically the version of the push command you use when making the first push of your project.  The <b>-u</b> option sets the upstream location for future pushes done from this branch.  This essentially tells git to remember where push future changes so you don't have to type this full command in the future.</td>
+  </tr>
+  <tr>
+    <td>git push</td>
+    <td>Once you've told git to remember the upstream location (as described in the previous command), you don't need to type the full <i>git push -u origin [branch name]</i> command.  You just need to do <i>git push</i></td>
+  </tr>
+  <tr>
+    <td>git clone <i>[project url]</i> <i>[alias]</i></td>
+    <td>Clones git project locally.  If <b>[alias]</b> is omitted, the project name is used by default.</td>
+  </tr>
+  <tr>
+    <td>clone vs. fork</td>
+    <td>Greg mentioned this in his talk.  Do you recall this distinction?</td>
+  </tr>
+  <tr>
+    <td>git fetch origin <i>[remote branch]</i></td>
+    <td>Fetches the latest version of the remote and saves it into the special <b><i>origin/[remote branch name]</i></b>.<br><br>NOTE: You still need to do a merge to get this into your local branch.  <b>git pull</b> combines <b>git fetch</b> and <b>git merge</b> together for convenience, but I <b>highly discourage</b> using this command until you've been using git for awhile and really have a feel for what this is doing. See graphic: 200 state immediately after a fetch (need to merge to master).jpg</td>
+  </tr>
+  <tr>
+    <td>git reset --soft <i>[hash]</i><br><br>
+        git reset --mixed <i>[hash]</i><br><br>
+        git reset --hard <i>[hash]</i></td>
+    <td>After this workshop, you should be able to understand what this write up is talking about:<br><br>
+        <a href=https://gist.github.com/tnguyen14/0827ae6eefdff39e452b>https://gist.github.com/tnguyen14/0827ae6eefdff39e452b</a></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+<br><br><br><br><br><br>
+<p>Two ways to work with a Github remote:</p>
+<ol>
+  <li>Create remote first then, clone locally</li>
+    <ul>
+      <li>Easiest way to start a <b>new project</b> you know you'll want to have on Github.</li>
+      <li>Here's how:</li>
+      <ol>
+        <li>Navigate the project on github (e.g. https://github.com/MichaelSzczepaniak/PredictNextKBO)</li>
+        <li>Click the <b>Clone or download</b> button and copy the url</li>
+        <li>Run the <b>git clone</b> command described above using the url you just copied as the <i>[project url]</i> parameter</li>
+      </ol>
+    </ul>
+  <li>Create local repo first, create remote, push local to remote</li>
+    <ul>
+      <li>Good way to get an <b>existing project</b> out to Github.</li>
+      <li>Here's how:</li>
+      <ol>
+        <li>Use the <b>git init</b> command to initialize a project locally</li>
+        <li>Create some files and/or make some changes</li>
+        <li>Make a few commits to your local repo using the <b>git add</b> and <b>git commit</b> commands</li>
+        <li>Log into your github account.  If don't have an account, create one.</li>
+        <li>Click the <b>Repositories</b> link near the top of the page</li>
+        <li>Click the green <b>New</b> button</li>
+        <li>Fill out the form with the repo name and description</li>
+        <li>Click the <b>Public</b> radio button (unless you want to pay for a private repo...)</li>
+        <li>Click the <b>Create repository</b> button.  You should now have an empty repo to push your work to</li>
+        <li>Note information git provides you when you create your project.  You'll need this information to create your remote that will enable you push your work up to this remote repo.</li>
+        <li>Back on your local system, create a remote from within you local project using the <b>git remote add origin <i>[url to remote]</i></b> command described above.</li>
+        <li>Run the <b>git push -u origin master</b> command described above to push your local project to the remote.  You'll only need <b>git push</b> for future pushes since set the upstream parameter as described above.</li>
+      </ol>
+    </ul>
+<ol>
+
+</body>
+</html> 
+
+
