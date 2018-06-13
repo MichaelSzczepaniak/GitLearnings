@@ -7,15 +7,15 @@ table, th, td {
 }
 </style>
 <head>
-<title>Git Basic Terms & Concepts</title>
+<title>Git Commands, Terms, & Concepts</title>
 </head>
 <body>
 
-<h1>Git Basic Terms & Concepts</h1>
+<h1>Git Commands, Terms, & Concepts</h1>
 
 <span><i>To err is human.  To really screw up requires git.</i></span>
 
-<p>In the table below, git command always start with <b>git</b>.  Concepts will typically start with some other word or term.</p>
+<p>Git command always start with <b>git</b>.  Concepts will typically start with some other word or term.</p>
 
 <table style="width:100%">
   <tr>
@@ -33,15 +33,15 @@ table, th, td {
   </tr>
     <tr>
     <td>staging area</td>
-    <td>This is also know as <b>the index</b>.  This area acts as a intermediate state between the working directory and the commit.  This is where a tracked file is placed after changes have been made and a <b>git add [file name]</b> has been executed.</td>
+    <td>This is also know as <b>the index</b>.  This area acts as an intermediate state between the working directory and the commit.  This is where a tracked file is placed after changes have been made and a <b>git add [list of files]</b> has been executed.</td>
   </tr>
   <tr>
     <td>working directory</td>
-    <td>The location of your git project.  This is your local directory where your project files live.</td>
+    <td>This is where the <b>.git</b> folder resides which tells git that this location is a git project.  This is your local directory where your project files live.</td>
   </tr>
   <tr>
     <td>commit hash</td>
-    <td>This is 40 digit hex value that identifies a commit. Usually only need to give git 4 or 5 digits to specify  given commit.</td>
+    <td>This is 40 digit hex value that identifies a commit. Usually only need to give git 4 or 5 digits to specify a given commit.</td>
   </tr>
   <tr>
     <td>HEAD pointer</td>
@@ -65,7 +65,7 @@ table, th, td {
   </tr>
   <tr>
     <td>git log</td>
-    <td>This command has a lot of options.  For example, my favorite is:<br><br>git log --oneline -5<br><br>which lists a summary of the last 5 commits on a single line.  Feel free to explore.</td>
+    <td>This command has a lot of options.  For example, my favorite is:  <b>git log --oneline -5</b><br>which lists a summary of the last 5 commits on a single line.  Feel free to explore.</td>
   </tr>
     <tr>
     <td>git checkout <i>[branch name]</i></td>
@@ -75,6 +75,11 @@ table, th, td {
     <tr>
     <td>git checkout -b <i>[branch name]</i></td>
     <td>Create a new branch from the existing branch you executed this command from.  As with a regular checkout, make sure your working dir is clean before running this command.</td>
+  </tr>
+  </tr>
+    <tr>
+    <td>git checkout -b <i>[branch name] [commit hash]</i></td>
+    <td>Create a new branch from an earlier commit in the current branch.  Make sure your working dir is clean before running this command.</td>
   </tr>
   <tr>
     <td>git branch</td>
@@ -92,7 +97,24 @@ table, th, td {
     <td>git merge --abort</td>
     <td>This is command comes in handy if you do a merge and run into a conflict which you just don't want to resolve at this time.  Running this command will put you back into the state you were in before you attempted your merge.</td>
   </tr>
-<tr>
+    <tr>
+    <td>git diff[tool]</td>
+    <td>Show differences between your working directory and the index.</td>
+  </tr>
+    <tr>
+    <td>git diff[tool] HEAD [file_name]</td>
+    <td>Show the differences between your working directory and the most recent commit.</td>
+  </tr>
+    <tr>
+    <td>git diff[tool] --cached</td>
+    <td>Show differences between the index and the most recent commit.</td>
+  </tr>
+  </tr>
+    <tr>
+    <td>git diff[tool] [branch1] [branch2] [file_name]</td>
+    <td>Shows difference between version of a file in two branches</td>
+  </tr>
+  <tr>
     <td>git remote</td>
     <td>Lists the remotes the local git project knows about.  Using -v option lists urls to push and fetch (which are usually the same).  Remotes tell your local git installation where to push remote changes.</td>
   </tr>
