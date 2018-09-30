@@ -57,7 +57,7 @@ table, th, td {
   </tr>
   <tr>
     <td>git add <i>[file name]</i></td>
-    <td>This does two different things depending on the context.  If the file was previously untracked, this command tells git to start tracking the file.  If the file is being tracked</td>
+    <td>This does two different things depending on the context.  If the file was previously untracked, this command tells git to start tracking the file.  If the file is being tracked, it adds it to the index.</td>
   </tr>
   <tr>
     <td>git commit -m <i>[commit message]</i></td>
@@ -99,7 +99,7 @@ table, th, td {
   </tr>
     <tr>
     <td>git diff[tool]</td>
-    <td>Show differences between your working directory and the index.</td>
+    <td>Show differences between your working directory and the index.  If you have a diff tool configured (e.g. Beyond Compare), using the <b>difftool</b> command will launch your configured difftool</td>
   </tr>
     <tr>
     <td>git diff[tool] HEAD [file_name]</td>
@@ -150,8 +150,19 @@ table, th, td {
     <td>git reset --soft <i>[hash]</i><br><br>
         git reset --mixed <i>[hash]</i><br><br>
         git reset --hard <i>[hash]</i></td>
-    <td>After this workshop, you should be able to understand what this write up is talking about:<br><br>
-        <a href=https://gist.github.com/tnguyen14/0827ae6eefdff39e452b>https://gist.github.com/tnguyen14/0827ae6eefdff39e452b</a></td>
+    <td>Each of the variants starts by moving the head pointer to the specified commit ([hash] or HEAD~ if you want to go to parent commit).  The <i>--soft</i> option puts you in a state just like the one prior to doing <b>git commit</b> as shown in this diagram:
+    <p><img src="./images/reset-soft.png" height="400" width="351">
+    
+    A couple of good summaries can be found here:<br>
+        <ul>
+          <li>
+            <a href=https://gist.github.com/tnguyen14/0827ae6eefdff39e452b>https://gist.github.com/tnguyen14/0827ae6eefdff39e452b</a>
+          </li>
+          <li>
+            <a href=https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified>href=https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified</a>
+          </li>
+        </ul>
+    </td>
   </tr>
   <tr>
     <td></td>
